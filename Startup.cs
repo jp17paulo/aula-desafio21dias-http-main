@@ -1,16 +1,9 @@
-using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using PdfSharpCore.Drawing;
-using PdfSharpCore.Pdf;
-using Newtonsoft.Json;
 
 namespace http
 {
@@ -99,17 +92,17 @@ namespace http
                     string teste = context.Request.Headers["Cookie"];
                     string[] chaveValor = teste.Split(';');
                     await context.Response.WriteAsync($"<ul>");
-                    foreach(var item in chaveValor)
+                    foreach (var item in chaveValor)
                     {
                         string[] cv = item.Split('=');
                         // if(cv[0].Trim().ToLower() == "_manobra_session")
                         // {
-                            await context.Response.WriteAsync($"<li>");
+                        await context.Response.WriteAsync($"<li>");
 
-                            await context.Response.WriteAsync($"<b>Chave:</b> {cv[0]}<br>");
-                            await context.Response.WriteAsync($"<b>Valor:</b> {cv[1]}<br>");
+                        await context.Response.WriteAsync($"<b>Chave:</b> {cv[0]}<br>");
+                        await context.Response.WriteAsync($"<b>Valor:</b> {cv[1]}<br>");
 
-                            await context.Response.WriteAsync($"</li>");
+                        await context.Response.WriteAsync($"</li>");
                         // }
                     }
                     await context.Response.WriteAsync($"</ul>");
@@ -139,7 +132,7 @@ namespace http
                     await context.Response.WriteAsync($"Chave; Valor\n");
                     string teste = context.Request.Headers["Cookie"];
                     string[] chaveValor = teste.Split(';');
-                    foreach(var item in chaveValor)
+                    foreach (var item in chaveValor)
                     {
                         string[] cv = item.Split('=');
                         await context.Response.WriteAsync($"{cv[0]};{cv[1]}\n");
